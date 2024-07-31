@@ -1,0 +1,22 @@
+Visualization of Fox News Poll Results on Americans' Satisfaction and Trust in Their Institutions
+This project aims to create a series of charts to visualize the results of Fox News opinion polls. The survey evaluates American voters' perceptions of the country, their national pride, and trust in federal institutions. Various 2D, 3D, and interactive charts will be generated for a comprehensive analysis of the data.
+
+Table of Contents
+Introduction
+Data Sources
+Installation
+Usage
+Visualizations
+National Pride
+Best Country to Live
+Trust in Federal Government
+Confidence in Congress
+3D Visualizations
+Interactive Visualizations
+Contributing
+License
+Introduction
+This project provides visual insights into the opinion polls conducted by Fox News, focusing on Americans' satisfaction and trust in their institutions from 2010 to 2024. The visualizations include 2D, 3D, and interactive charts created using Python libraries Matplotlib and Plotly.
+
+Data Sources
+The data used in this project is sourced from Fox News and other relevant survey databases.
