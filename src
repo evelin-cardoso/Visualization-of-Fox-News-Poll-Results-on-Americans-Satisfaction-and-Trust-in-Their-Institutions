@@ -1,0 +1,85 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+
+# Sample data
+data = {
+    'Year': list(range(2010, 2025)),
+    'Proud_of_Country': [69, 70, 71, 68, 67, 65, 66, 63, 64, 62, 60, 59, 58, 56, 55],
+    'Best_Country_to_Live': [84, 82, 80, 78, 75, 74, 73, 71, 70, 69, 68, 67, 66, 64, 69],
+    'Trust_in_Federal_Government': [42, 40, 38, 37, 36, 35, 34, 33, 32, 31, 30, 30, 31, 32, 32],
+    'Confidence_in_Congress': [38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 25]
+}
+
+df = pd.DataFrame(data)
+
+# Custom colors
+lilac = '#C8A2C8'
+moss_green = '#8A9A5B'
+
+# Chart 1: National Pride
+plt.figure(figsize=(10, 6))
+plt.plot(df['Year'], df['Proud_of_Country'], marker='o', color=lilac, label='Proud of Country')
+plt.title('National Pride (2010-2024)')
+plt.xlabel('Year')
+plt.ylabel('Percentage (%)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Chart 2: Best Country to Live
+plt.figure(figsize=(10, 6))
+plt.plot(df['Year'], df['Best_Country_to_Live'], marker='s', color=moss_green, label='Best Country to Live')
+plt.title('Best Country to Live (2010-2024)')
+plt.xlabel('Year')
+plt.ylabel('Percentage (%)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Chart 3: Trust in Federal Government
+plt.figure(figsize=(10, 6))
+plt.plot(df['Year'], df['Trust_in_Federal_Government'], marker='^', color=lilac, label='Trust in Federal Government')
+plt.title('Trust in Federal Government (2010-2024)')
+plt.xlabel('Year')
+plt.ylabel('Percentage (%)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Chart 4: Confidence in Congress
+plt.figure(figsize=(10, 6))
+plt.plot(df['Year'], df['Confidence_in_Congress'], marker='d', color=moss_green, label='Confidence in Congress')
+plt.title('Confidence in Congress (2010-2024)')
+plt.xlabel('Year')
+plt.ylabel('Percentage (%)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# 3D Chart: National Pride, Best Country to Live, and Trust in Federal Government
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(111, projection='3d')
+ax.plot(df['Year'], df['Proud_of_Country'], df['Trust_in_Federal_Government'], marker='o', color=lilac, label='National Pride vs Trust')
+ax.plot(df['Year'], df['Best_Country_to_Live'], df['Trust_in_Federal_Government'], marker='^', color=moss_green, label='Best Country vs Trust')
+ax.set_title('National Pride, Best Country to Live, and Trust in Federal Government (2010-2024)')
+ax.set_xlabel('Year')
+ax.set_ylabel('National Pride/Best Country (%)')
+ax.set_zlabel('Trust in Federal Government (%)')
+ax.legend()
+plt.show()
+
+# Interactive Charts with Plotly
+fig = px.line(df, x='Year', y=['Proud_of_Country', 'Best_Country_to_Live'], labels={'value': 'Percentage (%)', 'variable': 'Metric'}, title='National Pride and Best Country to Live (2010-2024)', color_discrete_sequence=[lilac, moss_green])
+fig.show()
+
+fig = px.line(df, x='Year', y=['Trust_in_Federal_Government', 'Confidence_in_Congress'], labels={'value': 'Percentage (%)', 'variable': 'Metric'}, title='Trust in Federal Government and Confidence in Congress (2010-2024)', color_discrete_sequence=[lilac, moss_green])
+fig.show()
+
+fig = px.scatter_3d(df, x='Year', y='Proud_of_Country', z='Trust_in_Federal_Government', color='Proud_of_Country', title='National Pride vs Trust in Federal Government (3D)', color_continuous_scale=px.colors.sequential.Purples)
+fig.show()
+
+fig = px.scatter_3d(df, x='Year', y='Best_Country_to_Live', z='Trust_in_Federal_Government', color='Best_Country_to_Live', title='Best Country to Live vs Trust in Federal Government (3D)', color_continuous_scale=px.colors.sequential.YlGn)
+fig.show()
